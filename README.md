@@ -1,2 +1,2 @@
-# interval
+# Interval arduino library
 
