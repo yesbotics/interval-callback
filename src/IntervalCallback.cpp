@@ -1,16 +1,16 @@
-#include "Interval.h"
+#include "IntervalCallback.h"
 
-void Interval::start(unsigned long intervalLength, ExternalCallbackPointer onIntervalCallbackPointer) {
+void IntervalCallback::start(unsigned long intervalLength, ExternalCallbackPointer onIntervalCallbackPointer) {
 	this->onIntervalCallbackPointer = onIntervalCallbackPointer;
 	this->intervalLength = intervalLength;
 	this->lastMillis = millis();
 }
 
-void Interval::stop() {
+void IntervalCallback::stop() {
 	this->onIntervalCallbackPointer = 0;
 }
 
-void Interval::loop() {
+void IntervalCallback::loop() {
 	if (this->onIntervalCallbackPointer != 0) {
 		unsigned long currentMillis = millis();
 		if ((currentMillis - this->lastMillis) >= this->intervalLength) {

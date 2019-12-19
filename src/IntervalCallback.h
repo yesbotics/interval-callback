@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-class Interval {
+class IntervalCallback {
 
 public:
 	typedef void (*ExternalCallbackPointer)();

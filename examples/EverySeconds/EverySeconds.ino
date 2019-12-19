@@ -1,17 +1,17 @@
 #include "Arduino.h"
-#include <Interval.h>
+#include <IntervalCallback.h>
 
-Interval int0;
+IntervalCallback interval;
 
 int num = 0;
 
 void setup() {
 	Serial.begin(57600);
-	int0.start(1000, onInterval);
+	interval.start(1000, onInterval);
 }
 
 void loop() {
-	int0.loop();
+	interval.loop();
 }
 
 void onInterval() {
@@ -20,6 +20,6 @@ void onInterval() {
 	num++;
 	if (num > 10) {
 		Serial.println("stop it");
-		int0.stop();
+		interval.stop();
 	}
 }
