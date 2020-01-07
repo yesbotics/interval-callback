@@ -7,7 +7,8 @@ class IntervalCallback {
 
 public:
 	typedef void (*ExternalCallbackPointer)();
-	void start(unsigned long intervalLength, ExternalCallbackPointer onIntervalCallbackPointer);
+    IntervalCallback(unsigned long intervalMillis, ExternalCallbackPointer onIntervalCallbackPointer);
+	void start();
 	void stop();
 	void loop();
 protected:
@@ -16,6 +17,7 @@ private:
 	ExternalCallbackPointer onIntervalCallbackPointer;
 	unsigned long intervalLength;
 	unsigned long lastMillis;
+    boolean running = false;
 };
 
 #endif

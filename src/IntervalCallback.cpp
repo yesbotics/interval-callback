@@ -1,20 +1,26 @@
 #include "IntervalCallback.h"
 
-void IntervalCallback::start(unsigned long intervalLength, ExternalCallbackPointer onIntervalCallbackPointer) {
+IntervalCallback::IntervalCallback(unsigned long intervalMillis, ExternalCallbackPointer onIntervalCallbackPointer) {
 	this->onIntervalCallbackPointer = onIntervalCallbackPointer;
-	this->intervalLength = intervalLength;
+	this->intervalLength = intervalMillis;
+}
+
+void IntervalCallback::start() {
 	this->lastMillis = millis();
+    this->running = true;
 }
 
 void IntervalCallback::stop() {
-	this->onIntervalCallbackPointer = 0;
+    this->running = true;
 }
 
+// Call this in Arduino loop() function
 void IntervalCallback::loop() {
-	if (this->onIntervalCallbackPointer != 0) {
+	if (this->running) {
 		unsigned long currentMillis = millis();
 		if ((currentMillis - this->lastMillis) >= this->intervalLength) {
 			this->lastMillis = currentMillis;
+			this->stop();
 			this->onIntervalCallbackPointer();
 		}
 	}
