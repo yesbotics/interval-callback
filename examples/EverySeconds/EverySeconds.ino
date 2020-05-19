@@ -1,13 +1,13 @@
-#include "Arduino.h"
 #include <IntervalCallback.h>
 
-IntervalCallback interval;
-
+const unsigned long INTERVAL = 500;
+void onInterval();
 int num = 0;
+IntervalCallback interval(INTERVAL, onInterval);
 
 void setup() {
 	Serial.begin(57600);
-	interval.start(1000, onInterval);
+	interval.start();
 }
 
 void loop() {
