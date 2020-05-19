@@ -11,7 +11,7 @@ void IntervalCallback::start() {
 }
 
 void IntervalCallback::stop() {
-    this->running = true;
+    this->running = false;
 }
 
 // Call this in Arduino loop() function
@@ -20,7 +20,6 @@ void IntervalCallback::loop() {
 		unsigned long currentMillis = millis();
 		if ((currentMillis - this->lastMillis) >= this->intervalLength) {
 			this->lastMillis = currentMillis;
-			this->stop();
 			this->onIntervalCallbackPointer();
 		}
 	}
