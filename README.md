@@ -2,6 +2,11 @@
 
 # Changelog
 
+## Version 1.1.1
+
+* Example updated
+* Bugfix: stop function does not stop the timer
+
 ## Version 1.1.0
 
 * Changed start() function and moved parameters to the constructor 
