@@ -11,6 +11,7 @@ public:
 	void start();
 	void stop();
 	void loop();
+	boolean isRunning();
 protected:
 
 private:
